@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Discover Real China">
+  <rect width="64" height="64" rx="10" fill="#121212"/>
+  <path d="M14 42V18h13c7.7 0 12.8 4.7 12.8 12s-5.1 12-12.8 12H14zm7-6h5.6c3.9 0 6.2-2.3 6.2-6s-2.3-6-6.2-6H21v12z" fill="#f7f7f3"/>
+  <path d="M43 18h7v24h-7z" fill="#d4a85f"/>
+  <path d="M50 18l-7 12 7 12" fill="none" stroke="#f7f7f3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,25 @@
+# Ruiyun long image crops
+
+Source: `ruiyun-source-long.png` / size 750x9938
+
+- `01_section_hero_gate_full.jpg` ? 750x1019 ? box (0, 0, 750, 1019)
+- `02_section_intro_grapes.jpg` ? 750x1143 ? box (0, 1019, 750, 2162)
+- `03_winery_front_wide.jpg` ? 750x380 ? box (0, 2167, 750, 2547)
+- `04_vineyard_road_wide.jpg` ? 750x390 ? box (0, 2548, 750, 2938)
+- `05_architecture_collage.jpg` ? 750x676 ? box (0, 2938, 750, 3614)
+- `06_guest_room_section.jpg` ? 750x2089 ? box (0, 3614, 750, 5703)
+- `07_restaurant_section.jpg` ? 750x1155 ? box (0, 5703, 750, 6858)
+- `08_scene_space_section.jpg` ? 750x1255 ? box (0, 6858, 750, 8113)
+- `09_art_culture_section.jpg` ? 750x721 ? box (0, 8113, 750, 8834)
+- `10_location_section.jpg` ? 750x1104 ? box (0, 8834, 750, 9938)
+- `11_hero_gate_photo_crop.jpg` ? 750x900 ? box (0, 0, 750, 900)
+- `12_intro_grapes_background_crop.jpg` ? 750x1140 ? box (0, 1020, 750, 2160)
+- `13_guest_room_exterior_corridor.jpg` ? 750x285 ? box (0, 4018, 750, 4303)
+- `14_guest_room_bedroom_a.jpg` ? 750x483 ? box (0, 4389, 750, 4872)
+- `15_guest_room_bedroom_b.jpg` ? 750x559 ? box (0, 4878, 750, 5437)
+- `16_guest_room_detail_collage.jpg` ? 750x266 ? box (0, 5437, 750, 5703)
+- `17_restaurant_full_photo.jpg` ? 750x736 ? box (0, 6122, 750, 6858)
+- `18_scene_space_collage.jpg` ? 750x1043 ? box (0, 7070, 750, 8113)
+- `19_art_culture_workshop.jpg` ? 750x275 ? box (0, 8414, 750, 8689)
+- `20_art_culture_text_panel.jpg` ? 750x144 ? box (0, 8690, 750, 8834)
+- `21_location_photo_and_text.jpg` ? 750x735 ? box (0, 9203, 750, 9938)
