@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Tsingpu | Discover Real China</title>
+  <link rel="icon" href="discover-real-china-assets/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Learn how cultural hospitality, local knowledge, and thoughtful pacing inspire Discover Real China's journeys.">
+  <style>
+    :root{
+      --bg:#F7F7F8;
+      --surface:#FFFFFF;
+      --ink:#111111;
+      --muted:#5F6368;
+      --line:#D8DCE0;
+      --accent:#002FA7;
+      --orange:#FF4F00;
+      --dark:#171717;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Arial,"Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .shell{width:min(1360px,calc(100% - 40px));margin:0 auto}
+    .top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:13px}
+    .brand{font-weight:800}
+    .nav{display:flex;gap:18px;color:var(--muted)}
+    .nav a[aria-current="page"]{color:var(--ink);font-weight:800}
+    .notice{border-bottom:1px solid var(--line);padding:12px 0;color:var(--orange);font-size:13px;font-weight:800}
+    .hero{display:grid;grid-template-columns:.95fr 1.05fr;min-height:calc(100vh - 116px);border-bottom:1px solid var(--line)}
+    .hero-copy{padding:42px 32px 42px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+    .eyebrow{color:var(--accent);font-size:13px;font-weight:800}
+    h1{font-size:clamp(54px,8vw,128px);line-height:.9;margin:22px 0 0;max-width:8.8ch}
+    .lead{font-size:19px;line-height:1.7;color:#30343A;max-width:690px;margin:28px 0 0}
+    .hero-img{background:url('discover-real-china-assets/qingpu-tu-wen/selected-clean-crops/yangzhou-qingpu-retreat-full.jpg') center/cover no-repeat;min-height:620px;position:relative}
+    .hero-img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.52))}
+    .caption{position:absolute;left:26px;right:26px;bottom:24px;color:#fff;z-index:1;display:flex;justify-content:space-between;gap:18px;align-items:end}
+    .caption strong{font-size:34px;line-height:1;font-weight:800}
+    .section{padding:58px 0 0}
+    .section-head{display:grid;grid-template-columns:.5fr 1fr;gap:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;align-items:end}
+    .section-head h2{font-size:clamp(38px,5vw,78px);line-height:.95;margin:8px 0 0;max-width:11ch}
+    .section-head p{margin:0;color:var(--muted);line-height:1.75;max-width:820px}
+    .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+    .proof{padding:24px;background:var(--surface);border-right:1px solid var(--line);min-height:260px}
+    .proof:last-child{border-right:0}
+    .num{display:block;color:var(--orange);font-size:42px;line-height:1;font-weight:800}
+    h3{font-size:30px;line-height:1.05;margin:14px 0 0}
+    p{line-height:1.7}
+    .muted{color:var(--muted)}
+    .brand-evidence{border-bottom:1px solid var(--line);background:var(--surface)}
+    .philosophy{display:grid;grid-template-columns:.7fr 1.3fr;border-bottom:1px solid var(--line)}
+    .philosophy-title{padding:28px;border-right:1px solid var(--line);background:#F3F1E8}
+    .philosophy-title strong{display:block;color:#B49A5A;font-size:clamp(54px,7vw,112px);line-height:.85;margin-top:24px}
+    .philosophy-copy{padding:30px;display:grid;gap:18px}
+    .philosophy-copy p{margin:0;color:#30343A;font-size:17px;max-width:900px}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+    .metric{padding:24px;border-right:1px solid var(--line);min-height:190px}
+    .metric:nth-child(3n){border-right:0}
+    .metric:nth-child(-n+3){border-bottom:1px solid var(--line)}
+    .metric b{display:block;color:#B49A5A;font-size:clamp(42px,5vw,78px);line-height:.9}
+    .metric strong{display:block;margin-top:14px;font-size:20px;line-height:1.15}
+    .metric span{display:block;margin-top:9px;color:var(--muted);font-size:13px;line-height:1.55}
+    .evidence-split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+    .evidence-split article{padding:28px;border-right:1px solid var(--line)}
+    .evidence-split article:last-child{border-right:0}
+    .evidence-split h3{font-size:clamp(34px,4vw,56px);max-width:10ch}
+    .evidence-list{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:13px}
+    .evidence-list li{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);line-height:1.6}
+    .evidence-list b{color:var(--ink)}
+    .founder-row{display:grid;grid-template-columns:.55fr 1fr;border-bottom:1px solid var(--line)}
+    .founder-title{padding:28px;border-right:1px solid var(--line);background:var(--dark);color:#fff}
+    .founder-title h2{font-size:clamp(42px,5.5vw,86px);line-height:.92;margin:8px 0 0;max-width:8ch}
+    .founder-title p{color:rgba(255,255,255,.72);margin-top:20px}
+    .founder-cards{display:grid;grid-template-columns:1fr}
+    .founder-card{padding:28px;border-right:1px solid var(--line)}
+    .founder-card:last-child{border-right:0}
+    .founder-card p{max-width:820px}
+    .founder-card small{color:var(--accent);font-weight:800}
+    .founder-card h3{font-size:42px;margin-top:10px}
+    .founder-card p{color:var(--muted)}
+    .photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line)}
+    .photo{min-height:430px;background:center/cover no-repeat;position:relative;border-right:1px solid var(--line)}
+    .photo:last-child{border-right:0}
+    .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.58))}
+    .photo span{position:absolute;left:20px;right:20px;bottom:18px;z-index:1;color:#fff;font-size:18px;line-height:1.35;font-weight:800}
+    .relationship{display:grid;grid-template-columns:1.05fr .95fr;border-bottom:1px solid var(--line);background:var(--dark);color:#fff}
+    .relationship .text{padding:34px}
+    .relationship p{color:rgba(255,255,255,.76)}
+    .relationship .panel{display:grid;grid-template-columns:1fr 1fr;border-left:1px solid rgba(255,255,255,.22)}
+    .relationship article{padding:24px;border-right:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}
+    .relationship article:nth-child(2n){border-right:0}
+    .relationship strong{display:block;font-size:24px;line-height:1.1}
+    .relationship span{display:block;margin-top:10px;color:rgba(255,255,255,.68);line-height:1.55}
+    .checklist{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+    .checklist article{padding:24px;border-right:1px solid var(--line);background:var(--surface)}
+    .checklist article:nth-child(2n){border-right:0}
+    .checklist ul{margin:16px 0 0;padding-left:18px;color:var(--muted);line-height:1.75}
+    .cta{margin:58px 0 44px;border:1px solid var(--line);background:var(--accent);color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px}
+    .cta h2{font-size:46px;line-height:1;margin:0}
+    .cta p{margin:12px 0 0;color:rgba(255,255,255,.78);max-width:790px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border:1px solid #fff;background:#fff;color:var(--ink);padding:0 18px;font-weight:800;font-size:13px}
+    footer{border-top:1px solid var(--line);padding:26px 0 42px;color:var(--muted);font-size:13px}
+    @media(max-width:980px){
+      .nav{display:none}
+      .hero,.section-head,.proof-grid,.photo-grid,.philosophy,.metrics,.evidence-split,.founder-row,.founder-cards,.relationship,.relationship .panel,.checklist,.cta{grid-template-columns:1fr}
+      .hero-copy,.proof,.photo,.philosophy-title,.evidence-split article,.founder-title,.founder-card,.relationship .panel,.checklist article{border-right:0}
+      .hero-copy{border-bottom:1px solid var(--line);padding-right:0}
+      .hero-img{min-height:480px}
+      .metric{border-right:0}
+      .metric:nth-child(n){border-bottom:1px solid var(--line)}
+      .metric:last-child{border-bottom:0}
+      .cta .btn{width:100%}
+    }
+  </style>
+  <script src="discover-real-china-assets/js/drc-language.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <a class="brand" href="index.html">Discover Real China</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="beijing.html">Beijing</a>
+        <a href="chengdu-western-sichuan.html">Western Sichuan</a>
+        <a href="take-home.html">Take Home</a>
+        <a href="about-qingpu.html" aria-current="page">About</a>
+      </nav>
+    </header>
+
+    <div class="notice">Places, people, and everyday culture make the journey memorable.</div>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">About Tsingpu Cultural Travel</div>
+            <h1>A stay can become a deeper way to see China.</h1>
+            <p class="lead">Tsingpu is a cultural-retreat brand known for bringing local architecture, landscape, food, craft, and everyday life into the guest experience. Discover Real China draws on this place-based way of traveling when it helps guests choose where to stay and what to experience.</p>
+          </div>
+          <p class="muted">A good stay gives you more than a room: it gives you a way into the place around you.</p>
+        </div>
+        <div class="hero-img">
+          <div class="caption"><strong>Culture first</strong><span>Places to stay, people to meet, and everyday life to notice.</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="eyebrow">Why guests choose this kind of stay</div><h2>A place to stay can also be a place to begin.</h2></div>
+          <p>Tsingpu cultural retreats are designed around the character of a place. Guests can slow down, meet local culture, and understand a destination through what they see, taste, make, and hear.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof"><span class="num">01</span><h3>Places with character</h3><p class="muted">Stay in spaces shaped by local architecture, landscape, and daily life.</p></article>
+          <article class="proof"><span class="num">02</span><h3>Local culture, close up</h3><p class="muted">Discover tea, craft, food, village life, and heritage with context.</p></article>
+          <article class="proof"><span class="num">03</span><h3>People who can explain</h3><p class="muted">Cultural mentors help make unfamiliar places easier to understand.</p></article>
+          <article class="proof"><span class="num">04</span><h3>A gentler pace</h3><p class="muted">Start with a short stay, then add the experiences that fit your time.</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="eyebrow">The Tsingpu approach</div><h2>What this can add to your journey.</h2></div>
+          <p>A Tsingpu stay can be a starting point for a deeper China experience: one that connects a distinctive place with local people, everyday culture, and thoughtful pacing.</p>
+        </div>
+        <div class="brand-evidence">
+          <div class="philosophy">
+            <div class="philosophy-title">
+              <div class="eyebrow">The idea</div>
+              <strong>Since 2015</strong>
+            </div>
+            <div class="philosophy-copy">
+              <p>The name Tsingpu points to a return to what is original: the relationship between a place, the people who live there, and the rhythm of everyday life.</p>
+              <p>For guests, that can mean a stay with more to notice: architecture, landscape, food, craft, local stories, and objects to take home.</p>
+            </div>
+          </div>
+          <div class="metrics" aria-label="Cultural hospitality experience">
+            <article class="metric"><b>600+</b><strong>Cultural experiences</strong><span>A wide range of art, food, craft, seasonal living, and local-culture experiences.</span></article>
+            <article class="metric"><b>2,000+</b><strong>Cultural mentors</strong><span>A broad network across art, literature, film, education, design, and local knowledge.</span></article>
+            <article class="metric"><b>500+</b><strong>Objects and kits</strong><span>Cultural objects and materials that help guests keep the journey close at home.</span></article>
+          </div>
+          <div class="evidence-split">
+            <article>
+              <div class="eyebrow">Experience across industries</div>
+              <h3>Cultural work beyond travel.</h3>
+              <ul class="evidence-list">
+                <li><b>Luxury and lifestyle:</b> cultural experiences for high-end consumer, fashion, and hospitality brands.</li>
+                <li><b>Automotive and mobility:</b> cultural programs and guest experiences for Chinese and international automotive brands.</li>
+                <li><b>Finance, property, media, and technology:</b> cultural programs for teams, clients, and corporate gatherings.</li>
+              </ul>
+            </article>
+            <article>
+              <div class="eyebrow">Recognition</div>
+              <h3>Selected properties have earned design and hospitality attention.</h3>
+              <ul class="evidence-list">
+                <li><b>Design-led stays:</b> selected Tsingpu properties have been recognized by Design Hotels.</li>
+                <li><b>Hotel and design awards:</b> Tsingpu properties and cultural projects have appeared in design, hospitality, and boutique-hotel awards and rankings.</li>
+                <li><b>Why it matters:</b> thoughtful design makes architecture, local life, and hospitality part of the destination.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="founder-row">
+            <div class="founder-title">
+              <div class="eyebrow">The founder</div>
+              <h2>A founder focused on place and everyday life.</h2>
+              <p>Wang Gongquan founded Tsingpu. His entrepreneurial and investment background is part of the story behind a hospitality approach that invites guests to notice distinctive places, local culture, and daily life.</p>
+            </div>
+            <div class="founder-cards">
+              <article class="founder-card">
+                <small>Founder / Chairman</small>
+                <h3>Wang Gongquan</h3>
+                <p>Wang Gongquan founded Tsingpu and helped develop its cultural-retreat approach, where the setting, the people, and the experience matter as much as the room.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="eyebrow">See it in real places</div><h2>The idea becomes clearer when you see the places.</h2></div>
+          <p>Across Jiangnan and Fujian, the story changes with the setting: gardens and canals, village life, restored architecture, and food made for the place.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="photo" style="background-image:url('discover-real-china-assets/qingpu-tu-wen/selected-clean-crops/suzhou-qingpu-retreat-full.jpg')"><span>Suzhou / gardens, water, and a slower day</span></div>
+          <div class="photo" style="background-image:url('discover-real-china-assets/qingpu-tu-wen/selected-clean-crops/yangzhou-long-selected-06.jpg')"><span>Yangzhou / canal life, food, and local rhythm</span></div>
+          <div class="photo" style="background-image:url('discover-real-china-assets/qingpu-tu-wen/selected-clean-crops/nanjing-tulou-card-full.jpg')"><span>Fujian Tulou / shared courtyards and living history</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="relationship">
+          <div class="text">
+            <div class="eyebrow">Choose where to begin</div>
+            <h2>Start with one place. Let the journey grow from there.</h2>
+            <p>Discover Real China helps overseas guests begin with a city, a stay, or a cultural experience. From there, you can add a local meal, craft workshop, route extension, or Take Home object.</p>
+            <p>A short stay can remain simple, or become the first step into a deeper China journey.</p>
+          </div>
+          <div class="panel">
+            <article><strong>A short beginning</strong><span>Half-day, one-day, and two-day cultural experiences for guests with limited time.</span></article>
+            <article><strong>A deeper route</strong><span>Continue from Beijing, Shanghai, Chengdu, or Quanzhou into Western Sichuan, Jiangnan, Tulou, or Thangka culture.</span></article>
+            <article><strong>Something to take home</strong><span>Culture kits, videos, prints, and craft objects keep the experience with you.</span></article>
+            <article><strong>Tell us what interests you</strong><span>We will help match the right place, pace, and cultural experience.</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="eyebrow">Before you book</div><h2>We make the details clear before you decide.</h2></div>
+          <p>We confirm current availability, the exact place, experience details, included services, and final price before any booking or payment.</p>
+        </div>
+        <div class="checklist">
+          <article>
+            <h3>Tell us what you want</h3>
+            <ul>
+              <li>Choose a place, pace, and kind of stay.</li>
+              <li>Ask for a short cultural experience or longer route.</li>
+              <li>Add food, craft, local life, or a Take Home object.</li>
+              <li>Tell us what you have already arranged.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>What we confirm</h3>
+            <ul>
+              <li>Dates and availability.</li>
+              <li>Route order and travel time.</li>
+              <li>What is included and who provides it.</li>
+              <li>Final price and payment details in writing.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div>
+          <h2>Begin with a place in China.</h2>
+          <p>Explore a route, choose a cultural experience, or tell us what kind of stay you are looking for.</p>
+        </div>
+        <a class="btn" href="index.html#inquiry">Start inquiry</a>
+      </section>
+    </main>
+
+    <footer>About Tsingpu / cultural hospitality</footer>
+  </div>
+</body>
+</html>
+

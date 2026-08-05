@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chengdu / Western Sichuan | Discover Real China</title>
+  <link rel="icon" href="discover-real-china-assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="discover-real-china-assets/css/drc-entry-itineraries.css">
+  <style>
+    :root{
+      --bg:#F7F7F8;
+      --surface:#FFFFFF;
+      --ink:#111111;
+      --muted:#5F6368;
+      --line:#D8DCE0;
+      --accent:#FF4F00;
+      --blue:#002FA7;
+      --dark:#171717;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Arial,"Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .shell{width:min(1360px,calc(100% - 40px));margin:0 auto}
+    .top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:13px;line-height:1.2}
+    .brand{font-weight:800}
+    .nav{display:flex;gap:18px;color:var(--muted)}
+    .nav a[aria-current="page"]{color:var(--ink);font-weight:700}
+    .nav a:last-child{opacity:.7}
+    .hero{min-height:calc(100vh - 76px);display:grid;grid-template-columns:1fr 1.15fr;border-bottom:1px solid var(--line)}
+    .hero-copy{padding:34px 30px 34px 0;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--line)}
+    .eyebrow{font-size:13px;color:var(--blue);font-weight:800;line-height:1.3}
+    h1{font-size:clamp(52px,8vw,126px);line-height:.9;margin:22px 0 0;font-weight:800;max-width:9.3ch}
+    .lead{margin:28px 0 0;max-width:650px;color:#30343A;font-size:18px;line-height:1.7}
+    .chain{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:34px}
+    .chain div{padding:16px 14px 0 0;border-right:1px solid var(--line);min-height:118px}
+    .chain div:last-child{border-right:0}
+    .chain b{display:block;font-size:34px;color:var(--accent);line-height:1}
+    .chain strong{display:block;margin-top:12px;font-size:16px}
+    .chain span{display:block;margin-top:8px;color:var(--muted);font-size:13px;line-height:1.5}
+    .hero-media{position:relative;min-height:640px;background:url('discover-real-china-assets/western-sichuan-generated/drc-hailuogou-glacier-valley-2000x1125.png') center/cover no-repeat}
+    .hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.48))}
+    .caption{position:absolute;left:28px;right:28px;bottom:24px;z-index:1;color:#fff;display:flex;justify-content:space-between;gap:18px;align-items:end;font-size:14px;line-height:1.4}
+    .caption strong{font-size:34px;line-height:1;font-weight:800}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:0 18px;font-weight:800;font-size:13px}
+    .btn.secondary{background:transparent;color:var(--ink)}
+    .section{padding:58px 0 0}
+    .section-head{display:grid;grid-template-columns:.56fr 1fr;gap:26px;align-items:end;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
+    .section-head h2{font-size:clamp(38px,5vw,78px);line-height:.95;margin:8px 0 0;font-weight:800;max-width:11ch}
+    .section-head p{margin:0;color:var(--muted);line-height:1.75;font-size:16px;max-width:820px}
+    .entry-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border-bottom:1px solid var(--line)}
+    .entry-photo{display:grid;grid-template-rows:1fr 1fr;min-height:520px;border-right:1px solid var(--line)}
+    .entry-photo > div{background:center/cover no-repeat;min-height:260px;border-bottom:1px solid var(--line)}
+    .entry-photo > div:last-child{border-bottom:0}
+    .entry-list{display:grid;grid-template-columns:1fr 1fr}
+    .entry-list article{padding:24px;border-top:1px solid var(--line);border-right:1px solid var(--line);min-height:180px;background:var(--surface)}
+    .entry-list article:nth-child(1),.entry-list article:nth-child(2){border-top:0}
+    .entry-list article:nth-child(2n){border-right:0}
+    .index{display:block;color:var(--accent);font-size:28px;font-weight:800;line-height:1}
+    h3{font-size:30px;line-height:1.05;margin:14px 0 0;font-weight:800}
+    p{line-height:1.7}
+    .muted{color:var(--muted)}
+    .routes{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+    .route{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:620px}
+    .route:last-child{border-right:0}
+    .route-img{height:260px;background:center/cover no-repeat;border-bottom:1px solid var(--line)}
+    .route-body{padding:24px;display:flex;flex-direction:column;gap:18px;flex:1}
+    .route h3{font-size:34px;margin:0}
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{border:1px solid var(--line);padding:7px 10px;background:#fff;font-size:13px;color:var(--muted)}
+    .plan{display:grid;gap:10px;margin-top:auto}
+    .plan div{display:grid;grid-template-columns:64px 1fr;gap:12px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);line-height:1.55}
+    .plan b{color:var(--ink)}
+    .map-wrap{display:grid;grid-template-columns:1fr .45fr;border-bottom:1px solid var(--line);background:var(--surface)}
+    .map-img{min-height:620px;background:url('discover-real-china-assets/western-sichuan-route/western-sichuan-route-atlas-20260725.png') center/contain no-repeat;border-right:1px solid var(--line)}
+    .map-notes{display:grid}
+    .map-notes article{padding:24px;border-bottom:1px solid var(--line)}
+    .map-notes article:last-child{border-bottom:0}
+    .thangka{display:grid;grid-template-columns:.95fr 1.05fr;border-bottom:1px solid var(--line)}
+    .thangka-media{display:grid;grid-template-columns:1fr 1fr;border-right:1px solid var(--line)}
+    .thangka-media div{min-height:520px;background:center/cover no-repeat;border-right:1px solid var(--line)}
+    .thangka-media div:last-child{border-right:0}
+    .thangka-copy{padding:30px;background:var(--dark);color:#fff}
+    .thangka-copy .eyebrow{color:#fff}
+    .thangka-copy h2{font-size:clamp(40px,5.4vw,82px);line-height:.94;margin:10px 0 0}
+    .thangka-copy p{color:rgba(255,255,255,.78);font-size:16px}
+    .commerce{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border-top:1px solid rgba(255,255,255,.28)}
+    .commerce article{padding:18px 14px 0 0;border-right:1px solid rgba(255,255,255,.28)}
+    .commerce article:last-child{border-right:0}
+    .commerce strong{display:block;font-size:19px}
+    .commerce span{display:block;margin-top:8px;color:rgba(255,255,255,.68);font-size:13px;line-height:1.5}
+    .stay-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+    .stay{padding:24px;background:var(--surface);border-right:1px solid var(--line);min-height:270px}
+    .stay:last-child{border-right:0}
+    .stay h3{font-size:32px}
+    .stay-note{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted)}
+    .gallery{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line)}
+    .photo{min-height:420px;background:center/cover no-repeat;position:relative;border-right:1px solid var(--line)}
+    .photo:last-child{border-right:0}
+    .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.58))}
+    .photo span{position:absolute;left:20px;right:20px;bottom:18px;z-index:1;color:#fff;font-weight:800;font-size:17px;line-height:1.35}
+    .cta{margin:58px 0 44px;border:1px solid var(--line);background:var(--blue);color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px}
+    .cta h2{font-size:46px;line-height:1;margin:0}
+    .cta p{margin:12px 0 0;color:rgba(255,255,255,.78);max-width:760px}
+    .cta .btn{background:#fff;color:var(--ink);border-color:#fff}
+    footer{border-top:1px solid var(--line);padding:26px 0 42px;color:var(--muted);font-size:13px}
+    @media(max-width:980px){
+      .nav{display:none}
+      .hero,.section-head,.entry-grid,.routes,.map-wrap,.thangka,.stay-grid,.gallery,.cta{grid-template-columns:1fr}
+      .hero-copy,.entry-photo,.route,.map-img,.thangka-media,.photo,.stay{border-right:0}
+      .hero-copy{padding-right:0;border-bottom:1px solid var(--line)}
+      .hero-media{min-height:520px}
+      .chain,.entry-list,.commerce{grid-template-columns:1fr}
+      .chain div,.commerce article{border-right:0;border-bottom:1px solid var(--line)}
+      .chain div:last-child,.commerce article:last-child{border-bottom:0}
+      .entry-list article{border-right:0}
+      .entry-list article:nth-child(2){border-top:1px solid var(--line)}
+      .map-img{min-height:460px}
+      .thangka-media div{min-height:360px}
+      .cta .btn{width:100%}
+    }
+  </style>
+  <script src="discover-real-china-assets/js/drc-language.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <a class="brand" href="index.html">Discover Real China</a>
+      <nav class="nav">
+        <a href="beijing.html">Beijing</a>
+        <a href="shanghai.html">Shanghai</a>
+        <a href="chengdu-western-sichuan.html" aria-current="page">Western Sichuan</a>
+        <a href="quanzhou.html">Quanzhou</a>
+        <a href="tcm-wellness.html">TCM Wellness</a>
+        <a href="take-home.html">Take Home</a>
+        <a href="index.html#partners">Partners</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Chengdu / Western Sichuan</div>
+            <h1>Soft entry. High plateau.</h1>
+            <p class="lead">Chengdu makes the region easy to enter. From Hailuogou's glaciers, forests, and hot springs, the route can continue toward Garze, Daocheng Yading, Thangka studios, Tibetan cultural context, and highland stays.</p>
+            <div class="chain" aria-label="Destination logic">
+              <div><b>01</b><strong>Chengdu</strong><span>Entry city: tea, pandas, Sanxingdui, food.</span></div>
+              <div><b>02</b><strong>Western Sichuan</strong><span>What draws you onward: Hailuogou hot springs, Thangka, and Tibetan culture.</span></div>
+              <div><b>03</b><strong>Thangka</strong><span>Mineral pigments, studio visits, and stories to take home.</span></div>
+              <div><b>04</b><strong>Xiangyun</strong><span>Highland stays and a slower route rhythm.</span></div>
+            </div>
+            <div class="actions">
+              <a class="btn" href="index.html#inquiry">Add Sichuan to your plan</a>
+              <a class="btn secondary" href="#routes">View sample rhythms</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="caption"><strong>Hailuogou first</strong><span>Start with a glacier valley, then follow the route deeper into Western Sichuan.</span></div>
+        </div>
+      </section>
+
+
+      <section class="section" id="wellness-entry">
+        <div class="section-head">
+          <div><div class="eyebrow">Cultural wellness in Western Sichuan</div><h2>Begin in Chengdu, then follow the highland pace.</h2></div>
+          <p>Western Sichuan brings together a gentle start in Chengdu, Hailuogou's glaciers, forests, and hot springs, Thangka studios, Tibetan cultural context, and deeper Kham routes. Choose the pace that suits you; this is a cultural travel experience, not medical care.</p>
+        </div>
+        <div class="entry-list" style="border-bottom:1px solid var(--line)">
+          <article><span class="index">A</span><h3>Chengdu soft landing</h3><p class="muted">Tea, food, neighborhood pace, and a calm first day before mountain roads or highland culture.</p></article>
+          <article><span class="index">B</span><h3>Hailuogou easy entry</h3><p class="muted">Glacier light, forest roads, hot springs, and lower-threshold pacing for first-time Western Sichuan travelers.</p></article>
+          <article><span class="index">C</span><h3>Thangka and cultural respect</h3><p class="muted">Studio visits, pigments, line study, creator stories, and temple context with respect for sacred imagery and teacher guidance.</p></article>
+          <article><span class="index">D</span><h3>Highland rhythm</h3><p class="muted">Weather, road time, altitude, and rest days shape the route. The experience is planned with highland pacing and realistic safety boundaries.</p></article>
+        </div>
+      </section>
+      <section class="section" id="chengdu-entry">
+        <div class="section-head">
+          <div><div class="eyebrow">01 / Start in Chengdu</div><h2>Begin in Chengdu, then follow the route west.</h2></div>
+          <p>For overseas guests, Chengdu makes the region feel approachable before the altitude, distance, and Tibetan highland culture begin. Start with city life, then continue toward glaciers, highland culture, and longer routes through Western Sichuan.</p>
+        </div>
+        <div class="entry-grid">
+          <div class="entry-photo">
+            <div role="img" aria-label="Chengdu teahouse" style="background-image:url('discover-real-china-assets/chengdu/drc-chengdu-teahouse-life-1600x1067.png')"></div>
+            <div role="img" aria-label="Sanxingdui ancient Shu culture" style="background-image:url('discover-real-china-assets/chengdu/drc-chengdu-sanxingdui-1600x1067.png')"></div>
+          </div>
+          <div class="entry-list">
+            <article><span class="index">A</span><h3>Tea and slow life</h3><p class="muted">A soft first day: teahouse rhythm, neighborhood food, local hospitality, and a calmer beginning than a direct plateau push.</p></article>
+            <article><span class="index">B</span><h3>Pandas and family appeal</h3><p class="muted">A clear global hook that helps first-time China travelers feel the itinerary is friendly and easy to understand.</p></article>
+            <article><span class="index">C</span><h3>Sanxingdui context</h3><p class="muted">Ancient imagination before highland culture: bronze masks, archaeological mystery, and a stronger cultural bridge.</p></article>
+            <article><span class="index">D</span><h3>Food as confidence</h3><p class="muted">Hotpot, snacks, tea, and private dining make the route feel human before the landscape becomes cinematic.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section entry-itinerary-section" id="recommended-ways-to-begin">
+        <div class="section-head">
+          <div><div class="eyebrow">Recommended Ways to Begin</div><h2>Start with one clear direction from Chengdu.</h2></div>
+          <p>Western Sichuan is a large region. This first route keeps the geography understandable: one mountain direction, a manageable pace, and time to check weather, roads, altitude, and availability before anything is confirmed.</p>
+        </div>
+        <div class="entry-itinerary-grid">
+          <article class="entry-itinerary-card">
+            <div class="entry-itinerary-card-top"><span class="entry-itinerary-label">Featured first route</span><span class="entry-itinerary-duration">3 days / 2 nights</span></div>
+            <h3>Hailuogou Glacier & Hot Springs Weekend</h3>
+            <p class="entry-itinerary-intro">A focused first Western Sichuan journey from Chengdu: one mountain road, two nights beside the glacier country, a hot-spring stay, and enough time to enjoy the landscape without forcing the whole plateau into one short trip.</p>
+            <dl class="entry-itinerary-details">
+              <div class="entry-itinerary-detail"><dt>Start / end</dt><dd>Start in Chengdu; travel by private vehicle to Hailuogou; return to Chengdu on Day 3.</dd></div>
+              <div class="entry-itinerary-detail"><dt>For</dt><dd>First-time Western Sichuan visitors, short-break travelers, and guests who want mountain scenery with a manageable pace.</dd></div>
+              <div class="entry-itinerary-detail"><dt>Day 1</dt><dd>Chengdu pickup → drive toward Hailuogou → local lunch in Moxi → check in at Xiangyun Cliff Hot Spring Hotel → hot spring evening and Moxi old-town walk.</dd></div>
+              <div class="entry-itinerary-detail"><dt>Day 2</dt><dd>Hailuogou glacier and forest day, with the scenic cable-car and park transport arranged according to the weather and whether the scenic area is open → return for a hot-spring evening.</dd></div>
+              <div class="entry-itinerary-detail"><dt>Day 3</dt><dd>Slow breakfast and hotel time → return to Chengdu after lunch, arriving around the late afternoon subject to road conditions.</dd></div>
+              <div class="entry-itinerary-detail"><dt>Reference price</dt><dd>Reference price: from CNY 2,680 per person. The final price depends on your dates, room type, vehicle, tickets, meals, and road conditions.</dd></div>
+            </dl>
+            <div class="package-includes"><strong>Package includes</strong><span>Private vehicle from Chengdu, 2 nights at Xiangyun Cliff Hot Spring Hotel, breakfast, listed meals, Hailuogou park tickets and cable-car/park transport when operating, hot-spring access, travel insurance, and a vehicle oxygen bottle.</span><strong>Route note</strong><span>This is a Hailuogou route, not a three-day combination of Chengdu, Garze, Daocheng, and the whole Western Sichuan loop. Weather, road conditions, altitude pacing, hotel, vehicle, and guide availability are confirmed before payment.</span></div>
+            <div class="entry-itinerary-actions"><a class="btn" href="index.html?journey=Hailuogou%20Glacier%20and%20Hot%20Springs%20Weekend&destination=Chengdu%20and%20Western%20Sichuan&entry=Chengdu#inquiry">Request dates and final quote</a><span class="entry-itinerary-price">Reference price from CNY 2,680 per person</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="routes">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Core Destination</div><h2>Three sample rhythms make the plateau leg understandable.</h2></div>
+          <p>Choose among three clear directions first. We then confirm guides, cars, hotels, photography, atelier visits, altitude pacing, weather windows, and the practical rhythm before your plan is ready.</p>
+        </div>
+        <div class="routes">
+          <article class="route">
+            <div class="route-img" style="background-image:url('discover-real-china-assets/western-sichuan-generated/drc-hailuogou-glacier-valley-2000x1125.png')"></div>
+            <div class="route-body">
+              <div class="tags"><span class="tag">4 days / 3 nights</span><span class="tag">Hailuogou</span><span class="tag">Soft adventure</span></div>
+              <h3>Glacier Hot Springs</h3>
+              <p class="muted">A short first Western Sichuan route for travelers who want glacier light, forest roads, hot springs, and a manageable return to Chengdu. This 4-day / 3-night journey focuses on landscape, rest, and cultural context rather than medical treatment.</p>
+              <div class="plan">
+                <div><b>Day 1</b><span>Chengdu arrival, tea or food chapter, private transfer prep.</span></div>
+                <div><b>Day 2</b><span>Private transfer toward Hailuogou, forest road rhythm, hot spring evening.</span></div>
+                <div><b>Day 3</b><span>Hailuogou glacier, forest trail, photography window, slow recovery time.</span></div>
+                <div><b>Day 4</b><span>Slow morning, photo stop, return to Chengdu or continue to Garze.</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="route">
+            <div class="route-img" style="background-image:url('discover-real-china-assets/western-sichuan-generated/drc-garze-thangka-studio-1600x1067.png')"></div>
+            <div class="route-body">
+              <div class="tags"><span class="tag">4 days</span><span class="tag">Garze</span><span class="tag">Thangka focus</span></div>
+              <h3>Garze Thangka Country</h3>
+              <p class="muted">A culture-led route around atelier visits, mineral pigments, Gesar stories, master archives, and a quieter highland pace, with explicit respect for sacred imagery, teacher guidance, and local context.</p>
+              <div class="plan">
+                <div><b>Day 1</b><span>Chengdu to highland gateway with acclimatization rhythm.</span></div>
+                <div><b>Day 2</b><span>Thangka studio, pigment study, local culture chapter.</span></div>
+                <div><b>Day 3</b><span>Gesar story, temple context, creator interview or lesson.</span></div>
+                <div><b>Day 4</b><span>Return with Take Home product selection or continue onward after we confirm the route and available studio visits.</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="route">
+            <div class="route-img" style="background-image:url('discover-real-china-assets/western-sichuan-generated/drc-yading-highlands-trail-1600x1067.png')"></div>
+            <div class="route-body">
+              <div class="tags"><span class="tag">7 to 8 days</span><span class="tag">Daocheng Yading</span><span class="tag">Long route</span></div>
+              <h3>Tibetan Highlands Explorer</h3>
+              <p class="muted">A longer journey bringing together Chengdu, Hailuogou, Garze culture, Daocheng Yading, photography, and guided highland pacing.</p>
+              <div class="plan">
+                <div><b>Days 1-2</b><span>Chengdu entry, Hailuogou glacier, hot spring recovery.</span></div>
+                <div><b>Days 3-5</b><span>Garze cultural chapter, Thangka, temple and landscape stops.</span></div>
+                <div><b>Days 6-8</b><span>Daocheng Yading, final photography, return or onward extension.</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="route-map">
+        <div class="section-head">
+          <div><div class="eyebrow">Western Sichuan Route Atlas</div><h2>Three ways to travel deeper from Chengdu.</h2></div>
+          <p>The map makes the geography clear: Chengdu opens the door, then Hailuogou, Kangding, Litang, Daocheng Yading, Danba, Tagong, Siguniang Mountain, and highland stays form a route you can understand and plan.</p>
+        </div>
+        <div class="map-wrap">
+          <div class="map-img" role="img" aria-label="Western Sichuan route atlas from Chengdu to Hailuogou, Kangding, Litang, Daocheng Yading, Danba, Tagong, and Siguniang Mountain"></div>
+          <div class="map-notes">
+            <article><span class="index">1</span><h3>Hailuogou</h3><p class="muted">Glacier, forest, hot springs, and the first clear glimpse of how different Western Sichuan feels from Chengdu.</p></article>
+            <article><span class="index">2</span><h3>Garze</h3><p class="muted">The cultural middle: Tibetan life, Thangka, Gesar stories, pigments, creators, and deeper interpretation.</p></article>
+            <article><span class="index">3</span><h3>Daocheng Yading</h3><p class="muted">A highland highlight for longer routes, planned with careful pacing.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="thangka">
+        <div class="thangka">
+          <div class="thangka-media">
+            <div style="background-image:url('discover-real-china-assets/thangka/master-painting-room.png')"></div>
+            <div style="background-image:url('discover-real-china-assets/thangka/mineral-pigments.png')"></div>
+          </div>
+          <div class="thangka-copy">
+            <div class="eyebrow">03 / Thangka: From Studio To Home</div>
+            <h2>Thangka is the route's cultural bridge.</h2>
+            <p>A Western Sichuan journey can begin before travel through pigment stories, line-study materials, video classes, studio visits, and respectful cultural learning.</p>
+            <p>Thangka is rooted in long-form handwork, mineral pigments, stories, and studio practice. Experience it through cultural learning and atelier access, with respect for its religious and artistic context.</p>
+            <div class="commerce">
+              <article><strong>Collect</strong><span>Limited prints and guided digital study materials.</span></article>
+              <article><strong>Make</strong><span>Mineral pigment kits, line sheets, beginner materials.</span></article>
+              <article><strong>Learn</strong><span>Video classes, master stories, studio explainers.</span></article>
+              <article><strong>Visit</strong><span>Atelier chapter inside Garze or extended Kham routes.</span></article>
+            </div>
+            <div class="actions"><a class="btn" href="take-home.html">Open Take Home shelf</a><a class="btn secondary" href="index.html#inquiry">Ask about Thangka</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="xiangyun">
+        <div class="section-head">
+          <div><div class="eyebrow">04 / Highland Stays</div><h2>Highland stays that support the route.</h2></div>
+          <p>These stays help create a comfortable rhythm between road time, rest, local access, and highland culture.</p>
+        </div>
+        <div class="stay-grid">
+          <article class="stay"><span class="index">A</span><h3>Hailuogou stay</h3><p class="muted">A base for glacier views, hot springs, early photography, rest, and a gentler road rhythm.</p><p class="stay-note">Best for a first highland overnight.</p></article>
+          <article class="stay"><span class="index">B</span><h3>Garze stay</h3><p class="muted">A base for Thangka atelier visits, creator meetings, cultural interpretation, and mid-route rest.</p><p class="stay-note">Best for a deeper cultural chapter.</p></article>
+          <article class="stay"><span class="index">C</span><h3>Daocheng Yading stay</h3><p class="muted">A practical base for early starts, altitude pacing, and a longer highland journey.</p><p class="stay-note">Best for a carefully paced flagship route.</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="eyebrow">Places along the route</div><h2>Real places carry the route.</h2></div>
+          <p>The route connects Chengdu, Hailuogou, Garze, Daocheng Yading, Thangka studios, and highland stays into a journey that moves from city life to mountain culture.</p>
+        </div>
+        <div class="gallery">
+          <div class="photo" style="background-image:url('discover-real-china-assets/western-sichuan-generated/drc-hailuogou-glacier-valley-2000x1125.png')"><span>Hailuogou gives the route its first glacier shock.</span></div>
+          <div class="photo" style="background-image:url('discover-real-china-assets/western-sichuan-generated/drc-western-sichuan-moonlake-wetland-2000x1125.png')"><span>Moon Lake adds the soft grassland chapter.</span></div>
+          <div class="photo" style="background-image:url('discover-real-china-assets/thangka/digital-collection-series.png')"><span>Thangka gives the journey a story you can continue at home.</span></div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div>
+          <h2>Turn the plateau story into a plan.</h2>
+          <p>Tell us which parts interest you: a custom Western Sichuan journey, a Thangka product, a studio visit, altitude pacing, vehicle support, hotels, or a route extension. We will reply with the next practical step.</p>
+        </div>
+        <a class="btn" href="index.html#inquiry">Start your inquiry</a>
+      </section>
+    </main>
+
+    <footer>Discover Real China / Chengdu and Western Sichuan cultural travel inquiry</footer>
+  </div>
+</body>
+</html>

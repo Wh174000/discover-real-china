@@ -1,0 +1,649 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beijing Is Not A One-Time City | Discover Real China</title>
+  <style>
+    :root {
+      --paper: #f4ead8;
+      --ink: #1b2530;
+      --muted: #7c6f61;
+      --gold: #b9822f;
+      --red: #9a3d28;
+      --blue: #2d5a6f;
+      --green: #65785a;
+      --line: rgba(45, 37, 28, .22);
+      --shadow: 0 24px 70px rgba(41, 28, 14, .18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,.65), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(185,130,47,.10), transparent 28%),
+        #e7d8bf;
+      color: var(--ink);
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .page {
+      width: min(1320px, calc(100vw - 36px));
+      margin: 28px auto;
+      min-height: 880px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.24), transparent 18%, transparent 82%, rgba(105,77,45,.08)),
+        repeating-linear-gradient(0deg, rgba(70,46,22,.025) 0 1px, transparent 1px 5px),
+        var(--paper);
+      border: 1px solid rgba(83, 58, 31, .22);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(142, 97, 45, .35);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    .header {
+      position: relative;
+      z-index: 2;
+      padding: 54px 64px 26px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 44px;
+      align-items: end;
+    }
+
+    .kicker {
+      font-family: Arial, sans-serif;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(48px, 6vw, 92px);
+      line-height: .96;
+      letter-spacing: -.035em;
+      font-family: "Segoe Print", "Bradley Hand ITC", Georgia, serif;
+      font-weight: 700;
+      max-width: 780px;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #554331;
+      max-width: 620px;
+      font-family: "Segoe Print", Georgia, serif;
+    }
+
+    .intro-card {
+      justify-self: end;
+      width: min(420px, 100%);
+      padding: 26px 28px;
+      border: 1.5px dashed rgba(154, 61, 40, .38);
+      border-radius: 18px 28px 20px 30px;
+      background:
+        linear-gradient(2deg, rgba(255, 250, 239, .84), rgba(250, 238, 214, .78));
+      box-shadow: 0 16px 45px rgba(81, 55, 29, .10);
+      transform: rotate(1.2deg);
+    }
+
+    .intro-card strong {
+      display: block;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--blue);
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .intro-card p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.45;
+      color: #4f453b;
+    }
+
+    .main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 30px;
+      padding: 8px 52px 52px;
+    }
+
+    .map-wrap {
+      min-height: 660px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 30% 28%, rgba(255, 255, 255, .44), transparent 16%),
+        radial-gradient(circle at 72% 62%, rgba(154, 61, 40, .055), transparent 18%),
+        radial-gradient(circle at 48% 52%, rgba(75,115,130,.08), transparent 34%),
+        repeating-linear-gradient(88deg, rgba(72, 47, 24, .025) 0 1px, transparent 1px 7px),
+        rgba(255, 252, 243, .50);
+      border: 1px solid rgba(84, 63, 39, .18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(80, 51, 26, .045), transparent 10%),
+        radial-gradient(circle at 88% 22%, rgba(80, 51, 26, .035), transparent 12%),
+        radial-gradient(circle at 54% 82%, rgba(80, 51, 26, .04), transparent 16%);
+      mix-blend-mode: multiply;
+    }
+
+    .legend {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      width: 246px;
+      padding: 12px 14px;
+      background: rgba(250, 244, 232, .72);
+      border: 1px solid rgba(78, 56, 35, .2);
+      border-radius: 16px;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      line-height: 1.35;
+      color: #4f463c;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 4px 0;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot.red { background: var(--red); }
+    .dot.gold { background: var(--gold); }
+    .dot.blue { background: var(--blue); }
+    .dot.gray { background: rgba(50,44,38,.35); }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      min-height: 660px;
+    }
+
+    .map-label {
+      font-family: "Segoe Print", "Bradley Hand ITC", "Comic Sans MS", cursive;
+      font-size: 14px;
+      fill: #2f2b27;
+      letter-spacing: .01em;
+      paint-order: stroke;
+      stroke: rgba(255, 250, 239, .88);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+
+    .small-label {
+      font-family: "Segoe Print", "Comic Sans MS", Arial, sans-serif;
+      font-size: 11px;
+      fill: #6b6055;
+      paint-order: stroke;
+      stroke: rgba(255, 250, 239, .82);
+      stroke-width: 3px;
+      stroke-linejoin: round;
+    }
+
+    .pin-title {
+      font-family: "Segoe Print", "Bradley Hand ITC", "Comic Sans MS", Arial, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      fill: var(--ink);
+      paint-order: stroke;
+      stroke: rgba(255, 250, 239, .88);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+
+    .route-note {
+      font-family: "Segoe Print", "Comic Sans MS", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      fill: var(--red);
+    }
+
+    .sketch-shape {
+      filter: url(#roughen);
+      vector-effect: non-scaling-stroke;
+    }
+
+    .sketch-card {
+      filter: url(#roughen);
+      stroke-dasharray: 2 4;
+      vector-effect: non-scaling-stroke;
+      display: none;
+    }
+
+    .icon-frame {
+      display: none;
+    }
+
+    .side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .product {
+      padding: 24px 24px 22px;
+      border-radius: 18px 28px 20px 26px;
+      background:
+        linear-gradient(3deg, rgba(255, 249, 236, .95), rgba(236, 225, 204, .92));
+      border: 1.5px solid rgba(45, 37, 30, .26);
+      color: #25323a;
+      box-shadow: 0 18px 50px rgba(18, 27, 32, .12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product:nth-child(2) {
+      background:
+        linear-gradient(-2deg, rgba(255, 247, 232, .95), rgba(232, 218, 193, .90));
+      transform: rotate(-.7deg);
+    }
+
+    .product::after {
+      content: "";
+      position: absolute;
+      right: -42px;
+      top: -42px;
+      width: 150px;
+      height: 150px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+    }
+
+    .product .tag {
+      font-family: "Segoe Print", "Comic Sans MS", Arial, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .product h2 {
+      margin: 0;
+      font-size: 31px;
+      line-height: 1.02;
+      font-family: "Segoe Print", "Bradley Hand ITC", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+
+    .product p {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.58;
+      color: rgba(42, 48, 48, .76);
+      margin: 14px 0 18px;
+    }
+
+    .modules {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      padding-top: 2px;
+    }
+
+    .modules span {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: rgba(37, 50, 58, .78);
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .modules span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .62em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(154, 61, 40, .62);
+    }
+
+    .save-card {
+      padding: 24px;
+      border-radius: 24px 18px 28px 20px;
+      background: rgba(255, 250, 239, .75);
+      border: 1.5px dashed rgba(75, 57, 36, .26);
+      transform: rotate(.45deg);
+    }
+
+    .save-card h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      line-height: 1.05;
+      color: #2b2825;
+      font-family: "Segoe Print", "Bradley Hand ITC", Georgia, serif;
+      font-weight: 700;
+    }
+
+    .save-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #5d5146;
+    }
+
+    .footer-note {
+      position: absolute;
+      right: 64px;
+      bottom: 26px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(49, 42, 34, .46);
+    }
+
+    @media (max-width: 980px) {
+      .header, .main { grid-template-columns: 1fr; padding-left: 28px; padding-right: 28px; }
+      .intro-card { justify-self: start; }
+      .main { padding-bottom: 36px; }
+      .side { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script src="discover-real-china-assets/js/drc-language.js" defer></script>
+</head>
+<body>
+  <section class="page" aria-label="Beijing route map for Discover Real China">
+    <header class="header">
+      <div>
+        <div class="kicker">Discover Real China 路 Beijing</div>
+        <h1>Beijing Is Not A One-Time City</h1>
+        <div class="subtitle">A first journey, with many reasons to return.</div>
+      </div>
+      <aside class="intro-card">
+        <strong>A first look at Beijing</strong>
+        <p>Use this map to see one possible first rhythm and a few experiences you can add. After your first visit, there are more stories to explore.</p>
+      </aside>
+    </header>
+
+    <main class="main">
+      <section class="map-wrap">
+        <svg viewBox="0 0 850 660" role="img" aria-label="Beijing route map with north at the top">
+          <defs>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#4b321d" flood-opacity=".18"/>
+            </filter>
+            <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.35"/>
+            </filter>
+            <filter id="paperGrain" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3" seed="12" result="grain"/>
+              <feColorMatrix in="grain" type="saturate" values="0"/>
+              <feComponentTransfer>
+                <feFuncA type="table" tableValues="0 .13"/>
+              </feComponentTransfer>
+            </filter>
+            <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+              <path d="M34 0H0V34" fill="none" stroke="rgba(63,49,34,.08)" stroke-width="1"/>
+            </pattern>
+          </defs>
+
+          <rect x="0" y="0" width="850" height="660" fill="url(#grid)" opacity=".55"/>
+          <rect x="0" y="0" width="850" height="660" filter="url(#paperGrain)" opacity=".25"/>
+
+          <!-- North mountain belt: Badaling and Ruiyun should visually sit at the top. -->
+          <path class="sketch-shape" d="M44 116 C110 66, 176 92, 232 58 C288 24, 360 54, 418 42 C492 26, 564 64, 642 52 C704 42, 760 70, 814 44" fill="none" stroke="#65785a" stroke-width="3" opacity=".45"/>
+          <path class="sketch-shape" d="M58 137 C132 92, 190 122, 264 82 C330 48, 398 83, 474 66 C552 48, 614 86, 704 72 C754 64, 796 82, 828 68" fill="none" stroke="#65785a" stroke-width="2" opacity=".30"/>
+
+          <!-- Beijing central axis: this gives the map an intuitive north-south structure. -->
+          <path class="sketch-shape" d="M424 118 C418 198, 418 268, 420 338 C422 424, 422 520, 424 622" fill="none" stroke="#9a3d28" stroke-width="2" stroke-dasharray="10 9" opacity=".28"/>
+          <text x="438" y="286" class="route-note">BEIJING CENTRAL AXIS</text>
+
+          <!-- The route lines sit on top of the directional map. -->
+          <path class="sketch-shape" d="M420 440 C386 404, 352 368, 318 322 C280 270, 252 202, 224 116" fill="none" stroke="#9a3d28" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 10"/>
+          <path class="sketch-shape" d="M224 116 C184 120, 148 130, 112 146" fill="none" stroke="#2d5a6f" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 8"/>
+          <path class="sketch-shape" d="M224 116 C184 120, 148 130, 112 146" fill="none" stroke="#b9822f" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 13" opacity=".85"/>
+          <path class="sketch-shape" d="M420 440 C470 486, 500 535, 514 596" fill="none" stroke="#b9822f" stroke-width="4" stroke-linecap="round" stroke-dasharray="4 11"/>
+          <path class="sketch-shape" d="M318 322 C420 288, 536 262, 710 224" fill="none" stroke="#2d5a6f" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 8" opacity=".7"/>
+
+          <text x="42" y="52" class="route-note">NORTH</text>
+          <text x="42" y="71" class="small-label">Great Wall 路 Ruiyun winery 路 mountain retreat</text>
+
+          <g opacity=".58">
+            <g transform="translate(96 140) rotate(-5)">
+              <path class="sketch-card" d="M2 8 C28 -2, 112 -2, 142 10 L134 98 C100 110, 30 106, 8 94 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/summer-palace-gray.png" x="10" y="10" width="122" height="78" preserveAspectRatio="xMidYMid meet"/>
+              <text x="2" y="122" class="map-label">Summer Palace</text>
+            </g>
+
+            <g transform="translate(246 148) rotate(3)">
+              <path class="sketch-card" d="M2 8 C28 -2, 112 -2, 142 10 L134 96 C98 108, 30 106, 8 92 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/old-summer-palace-gray.png" x="10" y="10" width="122" height="78" preserveAspectRatio="xMidYMid meet"/>
+              <text x="-8" y="120" class="map-label">Old Summer Palace</text>
+            </g>
+
+            <g transform="translate(360 206) rotate(-2)">
+              <path class="sketch-card" d="M2 8 C32 -4, 126 -2, 156 12 L148 106 C110 120, 36 116, 8 100 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/olympic-park-gray.png" x="12" y="12" width="132" height="86" preserveAspectRatio="xMidYMid meet"/>
+              <text x="8" y="130" class="map-label">Olympic Park</text>
+              <text x="16" y="146" class="small-label">Bird鈥檚 Nest 路 Water Cube</text>
+            </g>
+
+            <g transform="translate(674 196) rotate(5)">
+              <path class="sketch-card" d="M2 8 C28 -2, 112 -2, 142 10 L134 98 C100 110, 30 106, 8 94 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/art-798-gray.png" x="10" y="10" width="122" height="78" preserveAspectRatio="xMidYMid meet"/>
+              <text x="2" y="122" class="map-label">798 Art District</text>
+            </g>
+
+            <g transform="translate(690 338) rotate(-4)">
+              <path class="sketch-card" d="M2 8 C30 -4, 116 -2, 146 10 L138 100 C104 112, 34 108, 8 94 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/sanlitun-gray.png" x="10" y="8" width="92" height="62" preserveAspectRatio="xMidYMid meet"/>
+              <text x="8" y="88" class="map-label">Sanlitun</text>
+              <text x="10" y="104" class="small-label">Taikoo Li 路 SOHO</text>
+            </g>
+
+            <g transform="translate(70 282) rotate(4)">
+              <path class="sketch-card" d="M2 8 C28 -2, 104 -2, 134 10 L126 98 C94 110, 30 106, 8 94 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/beijing-zoo-gray.png" x="10" y="8" width="114" height="82" preserveAspectRatio="xMidYMid meet"/>
+              <text x="4" y="122" class="map-label">Beijing Zoo</text>
+            </g>
+
+            <g transform="translate(112 470) rotate(-3)">
+              <path class="sketch-card" d="M2 8 C30 -4, 118 -2, 150 12 L142 102 C106 116, 34 112, 8 98 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/yuuyuantan-park-gray.png" x="12" y="10" width="128" height="84" preserveAspectRatio="xMidYMid meet"/>
+              <text x="-2" y="126" class="map-label">Yuuyuantan Park</text>
+            </g>
+
+            <g transform="translate(700 462) rotate(3)">
+              <path class="sketch-card" d="M2 8 C30 -4, 118 -2, 150 12 L142 104 C106 118, 34 114, 8 100 Z" fill="rgba(255,249,236,.78)" stroke="rgba(45,37,30,.24)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/niujie-gray.png" x="10" y="8" width="88" height="60" preserveAspectRatio="xMidYMid meet"/>
+              <text x="12" y="88" class="map-label">Niujie</text>
+            </g>
+          </g>
+
+          <g class="jingling-experiences" filter="url(#softShadow)">
+            <g transform="translate(542 28) rotate(-4)" opacity=".98">
+              <path class="sketch-card" d="M2 10 C32 -4, 140 -2, 174 14 L166 112 C126 128, 38 124, 10 106 Z" fill="rgba(255,252,244,.94)" stroke="rgba(45,90,111,.46)" stroke-width="1.5"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/jingling/jingling-incense-light-v1.png" x="10" y="12" width="154" height="88" preserveAspectRatio="xMidYMid meet"/>
+              <circle cx="14" cy="18" r="6" fill="#2d5a6f" opacity=".82"/>
+              <text x="22" y="126" class="small-label">Incense bead craft</text>
+            </g>
+
+            <g transform="translate(648 82) rotate(4)" opacity=".98">
+              <path class="sketch-card" d="M2 10 C30 -4, 126 -2, 156 12 L148 102 C112 116, 34 112, 10 96 Z" fill="rgba(255,252,244,.94)" stroke="rgba(45,90,111,.46)" stroke-width="1.5"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/jingling/jingling-acupuncture-cupping-light-v2.png" x="9" y="11" width="138" height="78" preserveAspectRatio="xMidYMid meet"/>
+              <circle cx="14" cy="18" r="6" fill="#2d5a6f" opacity=".82"/>
+              <text x="22" y="116" class="small-label">TCM wellness culture</text>
+            </g>
+          </g>
+
+          <g filter="url(#softShadow)" transform="translate(350 372) rotate(-2)">
+            <path class="sketch-shape icon-frame" d="M4 12 C42 0, 126 2, 162 16 L156 124 C118 142, 42 136, 12 118 Z" fill="#fff8eb" stroke="#9a3d28" stroke-width="2.1" opacity=".88"/>
+            <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/forbidden-city-watercolor.png" x="16" y="18" width="138" height="96" preserveAspectRatio="xMidYMid meet"/>
+            <circle cx="-2" cy="28" r="14" fill="#9a3d28" stroke="#fff7ea" stroke-width="2.5"/>
+            <text x="-2" y="33" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#fff7ea">1</text>
+            <text x="168" y="54" class="pin-title" transform="rotate(2 168 54)">The Palace Museum</text>
+            <text x="168" y="74" class="small-label" transform="rotate(2 168 74)">Forbidden City 路 Tiananmen 路 National Museum</text>
+          </g>
+
+          <g filter="url(#softShadow)" transform="translate(250 258) rotate(3)">
+            <path class="sketch-shape icon-frame" d="M2 16 C38 0, 128 2, 166 22 L156 130 C116 144, 40 138, 10 120 Z" fill="#fff8e9" stroke="#2d5a6f" stroke-width="2.1" opacity=".88"/>
+            <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/hutong-watercolor.png" x="16" y="18" width="138" height="102" preserveAspectRatio="xMidYMid meet"/>
+            <circle cx="18" cy="18" r="13" fill="#9a3d28" stroke="#fff7ea" stroke-width="2"/>
+            <text x="18" y="23" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#fff7ea">2</text>
+            <text x="170" y="48" class="pin-title" transform="rotate(-3 170 48)">Hutong Life</text>
+            <text x="170" y="68" class="small-label" transform="rotate(-3 170 68)">Shichahai 路 Houhai 路 Bell & Drum Tower</text>
+            <text x="170" y="84" class="small-label" transform="rotate(-3 170 84)">Prince Kung鈥檚 Mansion 路 Nanluoguxiang</text>
+          </g>
+
+          <g filter="url(#softShadow)" transform="translate(148 46) rotate(-4)">
+            <path class="sketch-shape icon-frame" d="M0 24 C42 2, 142 0, 184 24 L172 148 C126 166, 44 156, 10 136 Z" fill="#fff7e8" stroke="#65785a" stroke-width="2.2" opacity=".88"/>
+            <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/great-wall-watercolor.png" x="12" y="18" width="158" height="120" preserveAspectRatio="xMidYMid meet"/>
+            <circle cx="18" cy="18" r="14" fill="#9a3d28" stroke="#fff7ea" stroke-width="2"/>
+            <text x="18" y="23" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#fff7ea">3</text>
+            <text x="184" y="58" class="pin-title" transform="rotate(4 184 58)">Badaling Great Wall</text>
+            <text x="184" y="78" class="small-label" transform="rotate(4 184 78)">North of Beijing 路 sunset walk 路 photography</text>
+          </g>
+
+          <g filter="url(#softShadow)" transform="translate(38 104) rotate(4)">
+            <path class="sketch-shape icon-frame" d="M2 14 C42 -4, 154 -2, 194 18 L184 142 C136 164, 42 154, 10 130 Z" fill="#eef8f7" stroke="#2d5a6f" stroke-width="2.3" opacity=".90"/>
+            <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/ruiyun-winery-watercolor.png" x="12" y="16" width="168" height="112" preserveAspectRatio="xMidYMid meet"/>
+            <circle cx="18" cy="18" r="14" fill="#2d5a6f" stroke="#d7b678" stroke-width="3"/>
+            <text x="18" y="23" text-anchor="middle" font-family="Arial" font-size="15" font-weight="700" fill="#fff7ea">4</text>
+            <text x="-8" y="-14" class="pin-title" transform="rotate(-4 -8 -14)">Ruiyun Winery Retreat</text>
+            <text x="-8" y="6" class="small-label" transform="rotate(-4 -8 6)">Beside the Great Wall 路 wine 路 countryside stay</text>
+          </g>
+
+          <g filter="url(#softShadow)" transform="translate(472 520) rotate(-3)">
+            <path class="sketch-shape icon-frame" d="M4 14 C38 0, 122 0, 158 20 L150 132 C112 150, 40 140, 10 122 Z" fill="#fff3dd" stroke="#b9822f" stroke-width="2.2" opacity=".88"/>
+            <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/temple-of-heaven-watercolor.png" x="14" y="14" width="132" height="106" preserveAspectRatio="xMidYMid meet"/>
+            <circle cx="132" cy="24" r="14" fill="#b9822f" stroke="#fff7ea" stroke-width="2.5"/>
+            <text x="132" y="29" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#fff7ea">5</text>
+            <text x="150" y="48" class="pin-title" transform="rotate(3 150 48)">Temple of Heaven</text>
+            <text x="150" y="68" class="small-label" transform="rotate(3 150 68)">Wellness rhythm 路 seasonal food</text>
+          </g>
+
+          <g opacity=".86">
+            <g transform="translate(602 272) rotate(2)">
+              <path class="sketch-card" d="M2 8 C34 -4, 128 -2, 160 12 L152 106 C114 120, 36 116, 8 100 Z" fill="rgba(255,249,236,.82)" stroke="rgba(45,37,30,.28)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/lama-temple-gray.png" x="10" y="8" width="96" height="62" preserveAspectRatio="xMidYMid meet"/>
+              <text x="10" y="88" class="map-label">Lama Temple</text>
+              <text x="10" y="104" class="small-label">Imperial College</text>
+            </g>
+
+            <g transform="translate(214 384) rotate(-2)">
+              <path class="sketch-card" d="M2 8 C34 -4, 128 -2, 160 12 L152 106 C114 120, 36 116, 8 100 Z" fill="rgba(255,249,236,.82)" stroke="rgba(45,37,30,.28)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/beihai-jingshan-gray.png" x="12" y="10" width="136" height="86" preserveAspectRatio="xMidYMid meet"/>
+              <text x="36" y="130" class="map-label">Beihai Park</text>
+              <text x="48" y="146" class="small-label">Jingshan Park</text>
+            </g>
+
+            <g transform="translate(366 502) rotate(2)">
+              <path class="sketch-card" d="M2 8 C36 -4, 136 -2, 170 12 L162 110 C122 126, 38 120, 8 104 Z" fill="rgba(255,249,236,.82)" stroke="rgba(45,37,30,.28)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/qianmen-dashilar-gray.png" x="12" y="10" width="146" height="90" preserveAspectRatio="xMidYMid meet"/>
+              <text x="36" y="134" class="map-label">Qianmen Street</text>
+              <text x="28" y="150" class="small-label">Dashilar 路 old Beijing snacks</text>
+            </g>
+
+            <g transform="translate(706 574) rotate(-2)">
+              <path class="sketch-card" d="M2 8 C34 -4, 126 -2, 158 12 L150 72 C112 84, 36 82, 8 68 Z" fill="rgba(255,249,236,.82)" stroke="rgba(45,37,30,.28)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/airport-railway-gray.png" x="8" y="4" width="92" height="44" preserveAspectRatio="xMidYMid meet"/>
+              <text x="8" y="68" class="map-label">Daxing Airport</text>
+            </g>
+
+            <g transform="translate(34 580) rotate(2)">
+              <path class="sketch-card" d="M2 8 C38 -4, 154 -2, 190 12 L182 78 C136 92, 42 88, 8 72 Z" fill="rgba(255,249,236,.82)" stroke="rgba(45,37,30,.28)"/>
+              <image href="discover-real-china-assets/beijing-seeding-map/watercolor-icons/airport-railway-gray.png" x="10" y="6" width="112" height="46" preserveAspectRatio="xMidYMid meet"/>
+              <text x="14" y="72" class="map-label">Capital Airport</text>
+            </g>
+          </g>
+        </svg>
+
+        <div class="legend">
+          <div class="legend-row"><span class="dot red"></span><span>Core first-time Beijing story</span></div>
+          <div class="legend-row"><span class="dot gold"></span><span>Retreat ideas to ask about</span></div>
+          <div class="legend-row"><span class="dot blue"></span><span>Optional cultural additions</span></div>
+          <div class="legend-row"><span class="dot gray"></span><span>Reasons to return next time</span></div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <article class="product">
+          <div class="tag">2 days / First Beijing</div>
+          <h2>Great Wall Wine Retreat</h2>
+          <p>A cinematic first route: palace roofs, hutong life, a Great Wall sunset, then a slow night at Ruiyun Winery outside the city.</p>
+          <div class="modules">
+            <span>Forbidden City</span>
+            <span>Hutong walk</span>
+            <span>Great Wall</span>
+            <span>Wine tasting</span>
+            <span>Ruiyun stay</span>
+            <span>Photo guide</span>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="tag">3 days / Wellness & heritage</div>
+          <h2>Great Wall Wellness & Heritage Escape</h2>
+          <p>The same Beijing icons, softened with non-medical wellness: tea, incense, seasonal food, gentle body care, and craft time.</p>
+          <div class="modules">
+            <span>Temple of Heaven</span>
+            <span>Tea ritual</span>
+            <span>Incense</span>
+            <span>TCM wellness</span>
+            <span>Craft workshop</span>
+            <span>Slow retreat</span>
+          </div>
+        </article>
+
+        <section class="save-card">
+          <h3>Save These For The Next Visit</h3>
+          <ul>
+            <li>Royal gardens: Summer Palace, Old Summer Palace, Beihai, Jingshan.</li>
+            <li>Contemporary Beijing: 798 Art District, Sanlitun, Galaxy SOHO, Taikoo Li.</li>
+            <li>Scholar & temple routes: Lama Temple, Imperial College, Confucius Temple.</li>
+            <li>Everyday city life: markets, food streets, universities, parks and local neighborhoods.</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <div class="footer-note">A first route, with room to wander</div>
+  </section>
+</body>
+</html>
+
