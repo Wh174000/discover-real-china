@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.discoverrealchina.com/sitemap.xml
+Sitemap: https://www.discover-real-china.com/sitemap.xml
