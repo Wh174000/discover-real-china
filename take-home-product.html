@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://www.discover-real-china.com/take-home-product.html">
   <title>Product Detail | Discover Real China</title>
   <link rel="icon" href="discover-real-china-assets/favicon.svg" type="image/svg+xml">
   <style>
@@ -544,6 +545,9 @@
       <article><small>${product.tileOne[0]}</small><strong>${product.tileOne[1]}</strong></article>
       <article><small>${product.tileTwo[0]}</small><strong>${product.tileTwo[1]}</strong></article>
     `;
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) canonicalLink.href = `https://www.discover-real-china.com/take-home-product.html?product=${encodeURIComponent(key)}`;
 
     document.title = `${product.title} | Discover Real China`;
     document.getElementById("app").innerHTML = `
