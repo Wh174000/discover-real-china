@@ -670,6 +670,684 @@
         "Notes:",
         requestNote
       ].join("\r\n");
+      location.href = `mailto:hello@discover-real-china.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+      note.textContent = `Checkout request prepared. ${summary}`;
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail | Discover Real China</title>
+  <link rel="icon" href="discover-real-china-assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --surface:#ffffff;
+      --ink:#111111;
+      --muted:#666c70;
+      --line:rgba(17,17,17,.16);
+      --accent:#e4002b;
+      --mist:#eceff1;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Aptos","Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .shell{width:min(1360px,calc(100% - 44px));margin:0 auto}
+    .top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:12px;text-transform:uppercase}
+    .brand{font-weight:800}
+    .nav{display:flex;gap:18px;color:var(--muted)}
+    .hero{min-height:auto;display:grid;grid-template-columns:minmax(320px,.88fr) minmax(0,1.12fr);gap:18px;padding:18px 0 10px;align-items:start}
+    .hero-copy{position:sticky;top:18px;align-self:start;border:1px solid var(--line);background:var(--surface);padding:32px;display:grid;gap:22px;align-content:start}
+    .kicker{font-size:11px;text-transform:uppercase;color:var(--accent);font-weight:800}
+    h1,h2,h3{font-family:"Aptos","Segoe UI",Arial,sans-serif;font-weight:800;margin:0}
+    h1{font-size:66px;line-height:.94;max-width:8.5ch}
+    .lead{margin-top:24px;max-width:620px;color:#30383c;font-size:16px;line-height:1.75}
+    .hero-actions,.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .hero-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .hero-meta article{border:1px solid var(--line);background:var(--bg);padding:12px 14px;display:grid;gap:6px}
+    .hero-meta small{font-size:10px;text-transform:uppercase;color:var(--accent)}
+    .hero-meta strong{font-size:15px;line-height:1.35}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;background:var(--ink);color:white;font-size:11px;text-transform:uppercase;border:1px solid var(--ink)}
+    .btn.secondary{background:transparent;color:var(--ink)}
+    .hero-media{display:grid;gap:18px;align-content:start}
+    .gallery{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .gallery-figure,.gallery-shot,.tile{position:relative;margin:0;border:1px solid var(--line);background:var(--surface);overflow:hidden}
+    .gallery-figure{min-height:720px}
+    .gallery-figure img,.gallery-shot img{width:100%;height:100%;display:block;object-fit:cover}
+    .gallery-figure:after,.gallery-shot:after,.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.5))}
+    .gallery-figure span,.gallery-shot span,.tile span{position:absolute;left:22px;right:22px;bottom:20px;z-index:1;color:white;font-size:12px;text-transform:uppercase}
+    .gallery-side{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:18px}
+    .gallery-shot{min-height:228px}
+    .hero-stack{display:grid;gap:18px}
+    .tile{min-height:351px;padding:22px;display:flex;flex-direction:column;justify-content:flex-start}
+    .tile .badge{display:inline-flex;align-self:flex-start;border:1px solid var(--line);background:var(--mist);font-size:10px;text-transform:uppercase;padding:6px 8px;margin-bottom:10px}
+    .tile strong{position:relative;z-index:1;font-size:28px;line-height:1.05;max-width:10ch}
+    .tile p{position:relative;z-index:1;margin:12px 0 0;color:var(--muted);line-height:1.6}
+    .tile-list{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px;position:relative;z-index:1}
+    .tile-list li{padding:8px 10px;border:1px solid var(--line);background:rgba(17,17,17,.03);font-size:12px;line-height:1.4;color:var(--ink)}
+    .section{padding:52px 0 0}
+    .section-head{display:grid;grid-template-columns:.7fr 1fr;gap:22px;align-items:end;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
+    .section-head h2{font-size:56px;line-height:.96;margin-top:10px}
+    .section-head p{color:var(--muted);line-height:1.75;margin:0}
+    .details-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .detail-card{border:1px solid var(--line);background:var(--surface);padding:22px;min-height:220px;display:grid;align-content:start;gap:10px}
+    .detail-card h3{font-size:28px;line-height:1.02}
+    .detail-card p{margin:0;color:var(--muted);line-height:1.65;font-size:14px}
+    .detail-card small{color:var(--accent);font-size:10px;text-transform:uppercase}
+    .matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .matrix article{border:1px solid var(--line);background:var(--surface);padding:24px;min-height:250px}
+    .matrix h3{font-size:30px;line-height:1.05;margin-top:10px}
+    .matrix p{color:var(--muted);line-height:1.65}
+    .inquiry{margin:54px 0 44px;display:grid;grid-template-columns:.58fr 1fr;border:1px solid var(--line);background:var(--surface)}
+    .inquiry-copy{padding:30px;border-right:1px solid var(--line);background:var(--ink);color:white}
+    .inquiry-copy .kicker{color:rgba(255,255,255,.78)}
+    .inquiry-copy h2{font-size:46px;line-height:.96;margin-top:10px}
+    .inquiry-copy p{color:rgba(255,255,255,.78);line-height:1.7}
+    .fields{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    label{display:grid;gap:8px;color:var(--ink);font-size:11px;text-transform:uppercase}
+    select,textarea,input{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;padding:12px;min-height:44px}
+    textarea{min-height:118px;resize:vertical}
+    .full{grid-column:1/-1}
+    .field-note{grid-column:1/-1;color:var(--muted);font-size:13px;line-height:1.6;border-top:1px solid var(--line);padding-top:14px}
+    footer{border-top:1px solid var(--line);padding:26px 0 42px;color:var(--muted);font-size:12px;text-transform:uppercase}
+    @media(max-width:1080px){
+      .hero,.section-head,.inquiry{grid-template-columns:1fr}
+      .hero-copy{position:static}
+      .gallery{grid-template-columns:1fr}
+      .gallery-side{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none}
+      .gallery-figure{min-height:460px}
+      .gallery-shot{min-height:180px}
+      .details-grid,.matrix{grid-template-columns:1fr 1fr}
+      .nav{display:none}
+      .inquiry-copy{border-right:0;border-bottom:1px solid var(--line)}
+    }
+    @media(max-width:640px){
+      .shell{width:min(100% - 28px,1360px)}
+      h1{font-size:50px}
+      .section-head h2{font-size:40px}
+      .details-grid,.matrix,.fields{grid-template-columns:1fr}
+      .hero-copy,.inquiry-copy{padding:22px}
+      .hero-meta{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .gallery-side{grid-template-columns:1fr;grid-template-rows:repeat(3,180px)}
+      .gallery-figure{min-height:360px}
+      .tile{min-height:240px}
+      .tile strong{font-size:24px;max-width:12ch}
+      .detail-card{min-height:auto}
+    }
+  </style>
+  <script src="discover-real-china-assets/js/drc-language.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <a class="brand" href="take-home.html">Discover Real China</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="take-home.html">Back to shelf</a>
+        <a href="#order">Request checkout</a>
+      </nav>
+    </header>
+
+    <main id="app"></main>
+
+    <footer>Discover Real China / Take Home product detail</footer>
+  </div>
+
+  <script>
+    const PRODUCTS = {
+      "royal-fragrance-box": {
+        destination: "Beijing",
+        price: "$99-$149",
+        title: "Royal Fragrance Plaque And Bracelet Box",
+        summary: "A Beijing royal-aesthetics gift box built around a fragrance plaque, fragrance bead bracelet, palace color cards, and an English story card, with a separate Ruiyun retreat available by inquiry.",
+        image: "discover-real-china-assets/shop/drc-palace-product-shots/drc-palace-collection-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-palace-product-shots/drc-palace-hero-v2.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-palace-product-shots/drc-palace-open-box-unboxing.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-palace-product-shots/drc-palace-incense-plaque-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-palace-product-shots/drc-palace-lifestyle-amenity.png" }
+        ],
+        tileOne: ["Included", "Fragrance plaque, bracelet, color cards, story card."],
+        tileTwo: ["Next step", "A Beijing retreat can be discussed separately when you plan your trip."],
+        bullets: [
+          "Fragrance plaque and fragrance bead bracelet in one gift set.",
+          "Palace color cards and a concise English culture story card.",
+          "Suitable as the first Beijing product or a refined travel gift.",
+          "A separate Beijing retreat can be discussed by inquiry."
+        ],
+        fit: [
+          "Best for a premium gift buyer who wants a first Beijing object.",
+          "Works well as a gift box, a cultural object, or a retreat teaser."
+        ],
+        notes: [
+        "Pre-order or ask about this edition while availability and packaging are confirmed.",
+          "Travel services stay separate from the physical product."
+        ]
+      },
+      "botanical-scent-kit": {
+        destination: "Beijing and Jiangnan",
+        price: "$59-$119",
+        title: "Botanical Scent Sachet And Bead Kit",
+        summary: "One practical starter kit combining fragrance-bead and sachet making, with scent materials, fabric, cord, cultural story cards, and an English video guide when included.",
+        image: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-hero-flatlay.png" },
+          { label: "Bead study", src: "discover-real-china-assets/shop/drc-bead-kit-product-shots/drc-bead-kit-hero-flatlay.png" },
+          { label: "Sachet materials", src: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-materials-detail.png" },
+          { label: "Fragrance detail", src: "discover-real-china-assets/shop/drc-bead-kit-product-shots/drc-bead-kit-herbs-beads-detail.png" }
+        ],
+        tileOne: ["Included", "Scent materials, fabric, cord, story cards, and video when listed."],
+        tileTwo: ["Next step", "A practical object that introduces Beijing and Jiangnan craft."],
+        bullets: [
+          "A single starter kit for both fragrance beads and sachet handwork.",
+          "Cultural notes explain scent, color, seasonal living, and everyday use.",
+          "Designed as a useful object and a guided cultural activity at home.",
+          "The video guide, ingredients, and shipping details are confirmed for each edition."
+        ],
+        fit: [
+          "Best for guests who want a low-friction hands-on cultural product.",
+          "Good for personal use, gifting, or a future Beijing/Jiangnan experience."
+        ],
+        notes: [
+          "Pre-order while the ingredient list and destination shipping rules are checked.",
+          "This product is cultural craft learning, not medical or therapeutic care."
+        ]
+      },
+      "beijing-bead-kit": {
+        destination: "Beijing",
+        price: "$59-$119",
+        title: "Botanical Bead-Making Kit",
+        summary: "A maker kit for fragrance bead making with botanical materials, color notes, tools, and an English video guide, with a separate Beijing scent workshop available by inquiry.",
+        image: "discover-real-china-assets/shop/drc-bead-kit-product-shots/drc-bead-kit-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-bead-kit-product-shots/drc-bead-kit-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-bead-kit-product-shots/drc-bead-kit-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-bead-kit-product-shots/drc-bead-kit-herbs-beads-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/beijing-seeding-map/jingling-experience/heritage-incense-beads.png" }
+        ],
+        tileOne: ["Included", "Botanical materials, tools, video guide, note cards."],
+        tileTwo: ["Next step", "Ask separately about a Beijing scent workshop when you plan a visit."],
+        bullets: [
+          "Botanical materials and making tools for bead making.",
+          "Color notes and a short English video guide.",
+          "A small entry product that can lead into a stronger workshop.",
+          "Release only after ingredients and shipping rules are clear."
+        ],
+        fit: [
+          "Best for travelers who want a hands-on starter object before travel.",
+          "Good as a low-friction add-on to the Beijing fragrance story."
+        ],
+        notes: [
+          "Pre-order only until the ingredient list and shipping routes are checked.",
+          "In-person workshops are arranged separately after we discuss your travel plans."
+        ]
+      },
+      "beijing-name-seal": {
+        destination: "Beijing",
+        price: "$39-$89",
+        title: "Chinese Name + Seal Starter Kit",
+        summary: "A gentle first step into writing and carving traditions with a Chinese name story card, pronunciation note, calligraphy tag, gift labels, and seal-culture explanation.",
+        image: "discover-real-china-assets/shop/drc-calligraphy-tag-product-shots/drc-calligraphy-tag-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-calligraphy-tag-product-shots/drc-calligraphy-tag-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-calligraphy-tag-product-shots/drc-calligraphy-tag-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-calligraphy-tag-product-shots/drc-calligraphy-tag-tools-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-calligraphy-tag-product-shots/drc-calligraphy-tag-web-card-3x2.png" }
+        ],
+        tileOne: ["Included", "Name card, pronunciation note, calligraphy tag, seal explanation."],
+        tileTwo: ["Next step", "A small entry kit for writing and seal culture."],
+        bullets: [
+          "Chinese name story card and pronunciation support.",
+          "Gift labels and a seal-culture explanation.",
+          "A clean first purchase for guests not ready for a larger kit.",
+          "A separate carving experience can be requested."
+        ],
+        fit: [
+          "Best for curious first-time visitors and gift buyers.",
+          "Works as a doorway into writing, naming, and seal traditions."
+        ],
+        notes: [
+          "Simple, low-barrier product meant to start the journey.",
+          "The larger carving session can be offered separately."
+        ]
+      },
+      "botanical-sachet-kit": {
+        destination: "Jiangnan",
+        price: "$59-$119",
+        title: "Botanical Sachet Material Kit",
+        summary: "A small object with a real use: fabric, cord, scent story cards, a guided making video, and Jiangnan handwork notes.",
+        image: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-materials-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-sachet-kit-product-shots/drc-sachet-kit-web-card-3x2.png" }
+        ],
+        tileOne: ["Included", "Fabric, cord, scent cards, guided making video."],
+        tileTwo: ["Next step", "Useful small object with a Jiangnan handwork story."],
+        bullets: [
+          "Fabric and cord for a sachet-style handwork kit.",
+          "Scent story cards and a guided making video.",
+          "Useful as a small gift, not just a decorative object.",
+          "A Jiangnan workshop can be booked separately if you travel later."
+        ],
+        fit: [
+          "Best for a calm, useful, low-friction Jiangnan purchase.",
+          "Good for gift buyers who want an object that can be used."
+        ],
+        notes: [
+          "A complete handwork product for home use; the workshop is separate.",
+          "Keep the object practical and culturally grounded."
+        ]
+      },
+      "mother-of-pearl-hairpin": {
+        destination: "Jiangnan",
+        price: "$69-$129",
+        title: "Mother-of-Pearl Hairpin Gift Set",
+        summary: "A lacquer-inspired hairpin gift set with an inlay motif card, gift packaging, styling note, and a separate Jiangnan craft-studio experience available by inquiry.",
+        image: "discover-real-china-assets/shop/drc-hairpin-product-shots/drc-hairpin-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-hairpin-product-shots/drc-hairpin-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-hairpin-product-shots/drc-hairpin-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-hairpin-product-shots/drc-hairpin-pearl-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-hairpin-product-shots/drc-hairpin-web-card-3x2.png" }
+        ],
+        tileOne: ["Included", "Hairpin, motif card, gift packaging, styling note."],
+        tileTwo: ["Next step", "Ask separately about a Jiangnan craft-studio experience."],
+        bullets: [
+          "Hairpin inspired by inlay and lacquer-like ornament.",
+          "Gift packaging and a concise styling note.",
+          "Works well as a premium small-object gift.",
+          "A Jiangnan craft-studio experience can be booked separately."
+        ],
+        fit: [
+          "Best for buyers who want a decorative object with a story.",
+          "Good as a polished gift set rather than a raw kit."
+        ],
+        notes: [
+          "Keep it refined and not overly decorative.",
+          "Studio dates and availability are confirmed separately."
+        ]
+      },
+      "pankou-jewelry-kit": {
+        destination: "Beijing",
+        price: "$49-$119",
+        title: "Pankou Knot Craft Kit",
+        summary: "A Beijing Take Home craft kit inspired by traditional Pankou garment closures: starter materials, an English motif card, and a maker guide when included. The teacher-led Pankou workshop is booked separately.",
+        image: "discover-real-china-assets/shop/drc-pankou-jewelry-product-shots/drc-pankou-jewelry-hero-tray.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-pankou-jewelry-product-shots/drc-pankou-jewelry-hero-tray.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-pankou-jewelry-product-shots/drc-pankou-jewelry-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-pankou-jewelry-product-shots/drc-pankou-jewelry-knots-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-pankou-jewelry-product-shots/drc-pankou-jewelry-web-card-3x2.png" }
+        ],
+        tileOne: ["Included", "Starter knot materials, motif card, and guide when listed."],
+        tileTwo: ["Experience", "Join the teacher-led Beijing Pankou workshop as a separate booking."],
+        bullets: [
+          "Starter knot materials for learning the basic construction.",
+          "An English motif card and maker guide when included.",
+          "The teacher-led Pankou workshop is a separate Beijing experience.",
+          "Finished wearable Pankou pieces are presented separately from the craft kit."
+        ],
+        fit: [
+          "Best for guests who want to learn a craft before or after travel.",
+          "One of the two Beijing workshop directions beside fragrance bead making."
+        ],
+        notes: [
+          "The kit and the teacher-led workshop are separate offers.",
+          "Wearable Pankou pieces, when available, are offered separately from the teacher-led workshop."
+        ]
+      },
+      "thangka-line-kit": {
+        destination: "Western Sichuan",
+        price: "$99-$169",
+        title: "Thangka Line And Pigment Kit",
+        summary: "A Western Sichuan learning kit built around authorized Thangka image use, line-study practice, and pigment stories, with a separate Garze studio experience available by inquiry.",
+        image: "discover-real-china-assets/shop/drc-thangka-kit-product-shots/drc-thangka-kit-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-thangka-kit-product-shots/drc-thangka-kit-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-thangka-kit-product-shots/drc-thangka-kit-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-thangka-kit-product-shots/drc-thangka-kit-pigment-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/western-sichuan-real-photos/thangka-culture/thangka-painting-process-02.jpg" }
+        ],
+        tileOne: ["Included", "Line sheets, pigment stories, brush, video guide."],
+        tileTwo: ["Next step", "A Garze studio visit can be discussed separately when you plan your trip."],
+        bullets: [
+          "Authorized line-study sheets and pigment story cards.",
+          "Practice brush and a video guide for at-home learning.",
+          "A premium kit, not just a digital image product.",
+          "Edition details, teacher guidance, and route conditions are confirmed before release."
+        ],
+        fit: [
+          "Best for travelers who want a serious craft and study object.",
+          "A thoughtful first step toward a Western Sichuan route."
+        ],
+        notes: [
+          "The images and teacher details are confirmed before this edition is offered.",
+          "A Garze studio visit is booked separately from the kit."
+        ]
+      },
+      "persimmon-tea-set": {
+        destination: "Shanghai and Jiangnan",
+        price: "$89-$129",
+        title: "Persimmon Travel Tea Set",
+        summary: "A compact tea set with persimmon motif, tea note cards, a cultural serving guide, and a separate Shanghai or Jiangnan tea session available by inquiry.",
+        image: "discover-real-china-assets/shop/drc-persimmon-tea-product-shots/drc-persimmon-tea-web-card-3x2.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-persimmon-tea-product-shots/drc-persimmon-tea-hero-16x9.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-persimmon-tea-product-shots/drc-persimmon-tea-giftbox-1x1.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-persimmon-tea-product-shots/drc-persimmon-tea-ceramic-detail-4x5.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-persimmon-tea-product-shots/drc-persimmon-tea-travel-pouch-3x2.png" }
+        ],
+        tileOne: ["Included", "Tea set, note cards, serving guide, motif story."],
+        tileTwo: ["Next step", "A travel tea gift with a separate tea session available by inquiry."],
+        bullets: [
+          "Compact tea set with a clean persimmon motif.",
+          "Tea note cards and a short cultural serving guide.",
+          "Works as both a gift and a travel memory object.",
+          "A Shanghai or Jiangnan tea session can be booked separately."
+        ],
+        fit: [
+          "Best for calm gift buyers and tea-oriented travelers.",
+          "Good as a compact route-linked object."
+        ],
+        notes: [
+          "Tea contents and shipping requirements are confirmed before checkout.",
+          "Tea sessions are booked separately."
+        ]
+      },
+      "suzhou-embroidery-kit": {
+        destination: "Suzhou",
+        price: "$59-$119",
+        title: "Suzhou Embroidery Starter Kit",
+        summary: "Embroidery base, beginner stitch guide, garden motif card, and English video guide for a gentle Suzhou craft beginning.",
+        image: "discover-real-china-assets/shop/drc-suzhou-embroidery-product-shots/drc-suzhou-embroidery-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-suzhou-embroidery-product-shots/drc-suzhou-embroidery-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-suzhou-embroidery-product-shots/drc-suzhou-embroidery-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-suzhou-embroidery-product-shots/drc-suzhou-embroidery-hoop-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/suzhou-cover-web-16x9.jpg" }
+        ],
+        tileOne: ["Included", "Embroidery base, guide, motif card, video guide."],
+        tileTwo: ["Next step", "A gentle first step into Suzhou embroidery."],
+        bullets: [
+          "Starter embroidery base with a beginner stitch guide.",
+          "Garden motif card and English video guide.",
+          "A classic Suzhou entry object with a soft learning curve.",
+          "A separate workshop can be requested when you visit Suzhou."
+        ],
+        fit: [
+          "Best for travelers who like calm handwork and garden motifs.",
+          "Works as a gentle Suzhou entry product."
+        ],
+        notes: [
+          "Keep the design delicate and usable.",
+          "The workshop is offered separately from the kit."
+        ]
+      },
+      "yangzhou-paper-cut-set": {
+        destination: "Yangzhou",
+        price: "$49-$98",
+        title: "Yangzhou Movable Type Starter Kit",
+        summary: "Wooden movable type blocks, ink tray, brush card, and an English story card for a practical Yangzhou desk object.",
+        image: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-collection-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-movable-type-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-movable-type-open-box-unboxing.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-movable-type-detail-4x5.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-movable-type-workshop-hands-4x5.png" }
+        ],
+        tileOne: ["Included", "Wooden type blocks, brush card, ink tray, story card."],
+        tileTwo: ["Next step", "A practical Yangzhou object for everyday use."],
+        bullets: [
+          "Wooden movable type blocks adapted into a practical kit.",
+          "Brush card and English story card for context.",
+          "Useful on a desk, as a study object, or as a gift.",
+          "The workshop is offered separately from the kit."
+        ],
+        fit: [
+          "Best for people who want a practical cultural object.",
+          "Good as a Yangzhou entry product while you plan a visit."
+        ],
+        notes: [
+          "Designed for everyday use, study, or gifting.",
+          "The workshop can be booked separately."
+        ]
+      },
+      "yangzhou-seal-carving-kit": {
+        destination: "Yangzhou",
+        price: "$59-$119",
+        title: "Yangzhou Seal Carving Starter Kit",
+        summary: "Seal stone, carving tools, ink paste, test paper, a name-seal story card, and a separate Yangzhou workshop available by inquiry.",
+        image: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-seal-carving-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-seal-carving-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-open-box-unboxing.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-seal-carving-detail-4x5.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-yangzhou-product-shots/drc-yangzhou-seal-carving-giftbox-4x5.png" }
+        ],
+        tileOne: ["Included", "Seal stone, carving tools, ink paste, test paper."],
+        tileTwo: ["Next step", "A compact Yangzhou carving set for home practice."],
+        bullets: [
+          "Seal stone, carving tools, ink paste, and test paper.",
+          "Name-seal story card and English explanation card.",
+          "Useful for home practice and as a gift object.",
+          "A separate workshop can be discussed when your route is confirmed."
+        ],
+        fit: [
+          "Best for buyers who want a tactile name-seal kit.",
+          "A practical Yangzhou gift with a separate workshop available by inquiry."
+        ],
+        notes: [
+          "Compact tools for simple home practice.",
+          "Workshop dates and availability are confirmed separately."
+        ]
+      },
+      "tulou-model-kit": {
+        destination: "Fujian Tulou",
+        price: "$79-$99 · Premium $129-$189",
+        title: "Fujian Tulou Architecture Model Kit",
+        summary: "A hands-on architectural model kit inspired by Tulou family living: wooden interlocking structure, hand-finished details, and English story cards.",
+        image: "discover-real-china-assets/shop/drc-tulou-product-shots/drc-tulou-architecture-hero-flatlay.png",
+        shots: [
+          { label: "Main view", src: "discover-real-china-assets/shop/drc-tulou-product-shots/drc-tulou-architecture-hero-flatlay.png" },
+          { label: "Open box", src: "discover-real-china-assets/shop/drc-tulou-product-shots/drc-tulou-architecture-open-box.png" },
+          { label: "Detail", src: "discover-real-china-assets/shop/drc-tulou-product-shots/drc-tulou-architecture-assembled-detail.png" },
+          { label: "Use scene", src: "discover-real-china-assets/shop/drc-tulou-product-shots/drc-tulou-model-detail.png" }
+        ],
+        tileOne: ["Included", "Wooden structure, hand finish, story cards."],
+        tileTwo: ["Next step", "A model kit that can inspire a future Tulou journey."],
+        bullets: [
+          "Wooden interlocking structure inspired by Tulou architecture.",
+          "Hand-finished details and English story cards.",
+          "A model kit that can inspire a future Tulou journey.",
+          "Suitable for education, display, and family-oriented gifting."
+        ],
+        fit: [
+          "Best for architecture lovers and family education buyers.",
+          "Works as a premium model kit with a real story behind it."
+        ],
+        notes: [
+          "The tea story is included as a small cultural companion to the architecture.",
+          "A Tulou journey can be discussed separately when your dates are known."
+        ]
+      }
+    };
+
+    const PUBLIC_PRODUCT_KEYS = [
+      "royal-fragrance-box",
+      "beijing-bead-kit",
+      "beijing-name-seal",
+      "botanical-scent-kit",
+      "mother-of-pearl-hairpin",
+      "pankou-jewelry-kit",
+      "suzhou-embroidery-kit",
+      "thangka-line-kit",
+      "persimmon-tea-set",
+      "yangzhou-paper-cut-set",
+      "yangzhou-seal-carving-kit",
+      "tulou-model-kit"
+    ];
+    const params = new URLSearchParams(location.search);
+    const requestedKey = params.get("product") || "royal-fragrance-box";
+    const key = PUBLIC_PRODUCT_KEYS.includes(requestedKey) ? requestedKey : "royal-fragrance-box";
+    const product = PRODUCTS[key];
+    const optionsHtml = PUBLIC_PRODUCT_KEYS.map(slug => {
+      const item = PRODUCTS[slug];
+      return `<option value="${slug}" ${slug === key ? "selected" : ""}>${item.title}</option>`;
+    }).join("");
+    const shots = (product.shots && product.shots.length ? product.shots : [{ label: "Main view", src: product.image }]).slice(0, 4);
+    const [mainShot, ...sideShots] = shots;
+    const gallerySideHtml = sideShots.map(shot => `
+      <figure class="gallery-shot">
+        <img src="${shot.src}" alt="${shot.label} for ${product.title}">
+        <span>${shot.label}</span>
+      </figure>
+    `).join("");
+    const bulletsHtml = product.bullets.map(item => `<article class="detail-card"><small>What you get</small><h3>${item}</h3><p>${product.summary}</p></article>`).join("");
+    const fitHtml = product.fit.map(item => `<article><div class="kicker">${product.destination}</div><h3>${item}</h3><p>${product.notes[0]}</p></article>`).join("");
+    const tileOneList = product.tileOne[1].replace(/\.$/, "").split(",").map(item => item.trim()).filter(Boolean);
+    const tileTwoList = product.tileTwo[1].replace(/\.$/, "").split(",").map(item => item.trim()).filter(Boolean);
+    const tileOneHtml = tileOneList.map(item => `<li>${item}</li>`).join("");
+    const tileTwoHtml = tileTwoList.map(item => `<li>${item}</li>`).join("");
+    const noteHtml = product.notes.map(item => `<p>${item}</p>`).join("");
+    const heroMetaHtml = `
+      <article><small>Destination</small><strong>${product.destination}</strong></article>
+      <article><small>Price</small><strong>${product.price}</strong></article>
+      <article><small>${product.tileOne[0]}</small><strong>${product.tileOne[1]}</strong></article>
+      <article><small>${product.tileTwo[0]}</small><strong>${product.tileTwo[1]}</strong></article>
+    `;
+
+    document.title = `${product.title} | Discover Real China`;
+    document.getElementById("app").innerHTML = `
+      <section class="hero">
+        <div class="hero-copy">
+          <div>
+            <div class="kicker">${product.destination} / ${product.price}</div>
+            <h1>${product.title}</h1>
+            <p class="lead">${product.summary}</p>
+          </div>
+          <div class="hero-meta">${heroMetaHtml}</div>
+          <div>
+            <div class="hero-actions">
+              <a class="btn" href="#order">Request checkout link</a>
+              <a class="btn secondary" href="take-home.html">Back to shelf</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="gallery">
+            <figure class="gallery-figure">
+              <img src="${mainShot.src}" alt="${mainShot.label} for ${product.title}">
+              <span>${mainShot.label}</span>
+            </figure>
+            <div class="gallery-side">
+              ${gallerySideHtml}
+            </div>
+          </div>
+          <div class="hero-stack">
+            <div class="tile">
+              <div class="badge">${product.tileOne[0]}</div>
+              <strong>${product.tileOne[1]}</strong>
+              <ul class="tile-list">${tileOneHtml}</ul>
+            </div>
+            <div class="tile">
+              <div class="badge">${product.tileTwo[0]}</div>
+              <strong>${product.tileTwo[1]}</strong>
+              <ul class="tile-list">${tileTwoHtml}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="kicker">Product detail</div><h2>See the object, the guide, and the route together.</h2></div>
+          <p>See what the product includes, why it belongs to the destination, and what happens after you request checkout.</p>
+        </div>
+        <div class="details-grid">
+          ${bulletsHtml}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><div class="kicker">Why it fits</div><h2>The product is the doorway.</h2></div>
+          <p>Each item stands on its own as a gift or kit, with an optional workshop or journey available when you are ready.</p>
+        </div>
+        <div class="matrix">
+          ${fitHtml}
+        </div>
+      </section>
+
+      <section class="inquiry" id="order">
+        <div class="inquiry-copy">
+          <div class="kicker">Checkout request</div>
+          <h2>Request a checkout link.</h2>
+          <p>Tell us the item, quantity, country, and timing. We confirm stock, shipping, included video-guide access when relevant, and payment next step before sending the link.</p>
+        </div>
+        <form class="fields">
+          <label>Selected product
+            <select>${optionsHtml}</select>
+          </label>
+          <label>Quantity
+            <input value="1">
+          </label>
+          <label>Country or region
+            <input placeholder="Where should we ship or plan for?">
+          </label>
+          <label>Preferred timing
+            <input placeholder="Example: this month, next month, not sure">
+          </label>
+          <label class="full">What should we prepare?
+            <textarea placeholder="Tell us the edition, quantity, shipping window, or whether you would like to ask about a workshop."></textarea>
+          </label>
+          <div class="field-note">${noteHtml}<p>Planning a China trip later? Tell us about this purchase and we can discuss a related welcome benefit or experience upgrade with your travel plan.</p></div>
+          <div class="full"><button class="btn" type="submit">Prepare checkout request</button></div>
+        </form>
+      </section>
+    `;
+
+    const form = document.querySelector("form");
+    const note = document.querySelector(".field-note");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const selectedSlug = document.querySelector("select").value;
+      const selectedProduct = PRODUCTS[selectedSlug] || product;
+      const quantity = document.querySelectorAll('input')[0].value || "1";
+      const region = document.querySelectorAll('input')[1].value || "not set";
+      const timing = document.querySelectorAll('input')[2].value || "not set";
+      const requestNote = document.querySelector("textarea").value || "No extra notes yet.";
+      const summary = [
+        `Product: ${selectedProduct.title}`,
+        `Quantity: ${quantity}`,
+        `Region: ${region}`,
+        `Timing: ${timing}`
+      ].join(" | ");
+      const subject = encodeURIComponent(`Discover Real China checkout request - ${selectedProduct.title}`);
+      const body = [
+        "Hello Discover Real China,",
+        "",
+        "I would like to request a checkout link for this Take Home product:",
+        `Product: ${selectedProduct.title}`,
+        `Destination: ${selectedProduct.destination}`,
+        `Listed price: ${selectedProduct.price}`,
+        `Quantity: ${quantity}`,
+        `Country or region: ${region}`,
+        `Preferred timing: ${timing}`,
+        "",
+        "Please confirm stock, shipping cost, delivery time, included video-guide access if relevant, and payment next step.",
+        "",
+        "Future China journey note: I may later plan a trip and would like to discuss how this purchase could connect with a welcome benefit or experience upgrade.",
+        "",
+        "Notes:",
+        requestNote
+      ].join("\r\n");
       location.href = `mailto:hello@discoverrealchina.com?subject=${subject}&body=${encodeURIComponent(body)}`;
       note.textContent = `Checkout request prepared. ${summary}`;
     });
